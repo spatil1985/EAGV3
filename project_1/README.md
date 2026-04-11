@@ -4,6 +4,14 @@ A lightweight Windows voice-to-text tool that listens while you hold **Ctrl+Spac
 
 ---
 
+## Demo
+
+Youtube : https://youtu.be/3NOojuoF7HQ
+Linkedin: https://www.linkedin.com/posts/sudip-patil_software-used-to-be-a-moat-you-needed-activity-7448691524219052033-ACbl?utm_source=share&utm_medium=member_desktop&rcm=ACoAABNGBJ4B9RG_iMxYMDMIRydsroc-CEer1gc
+
+
+
+
 ## How It Works
 
 ```
