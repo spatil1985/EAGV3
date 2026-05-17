@@ -1,0 +1,18 @@
+[project]
+name = "project-3-padma"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.0",
+    "httpx>=0.27",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "duckduckgo-search==5.3.1",
+    "beautifulsoup4>=4.12",
+    "aiofiles>=23.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "google-api-python-client>=2.100",
+    "google-auth-oauthlib>=1.1",
+    "google-auth-httplib2>=0.2",
+]
