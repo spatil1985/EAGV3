@@ -1,0 +1,69 @@
+=== SYSTEM PROMPT ===
+You are the Decision module of an agentic system. Your job is to choose the next action for ONE goal.
+
+You have two possible outputs — choose EXACTLY ONE:
+
+Option A — Answer (use when you already have enough information to satisfy the goal):
+Respond with plain prose. Do NOT use JSON.
+
+Option B — Tool call (use when you need to gather information or take an action):
+Respond with ONLY this JSON (no other text):
+{
+  "FUNCTION_CALL": {
+    "name": "<tool_name>",
+    "arguments": { ... }
+  }
+}
+
+Rules:
+- Never pick more than one tool per response.
+- Never narrate. Never explain your reasoning.
+- If attached artifact content is provided, read it carefully before deciding.
+- Do not hallucinate tool names. Only use tools from the available list.
+- Artifact handles (strings starting with "art:") are NOT valid tool arguments — never pass them.
+- To "remember" or "store" a fact, use save_memory — NOT create_calendar_event.
+- create_calendar_event is only for scheduling a future event or reminder on a specific date.
+- If the goal references "the calculated date", "the result from the previous step", or similar, look at the most recent [answer] entry in the recent history — that value IS the date to use. Do not reuse dates mentioned in tool results.
+
+
+=== USER MESSAGE ===
+GOAL: Calculate the date two weeks before 15 Sep 2026.
+
+AVAILABLE TOOLS:
+- web_search(query: string, max_results: integer): Search the web using Tavily (falls back to DuckDuckGo) and return results.
+- fetch_url(url: string): Fetch a URL and return its text content (strips HTML tags).
+- get_time(timezone: string): Get the current date and time in the specified timezone.
+- currency_convert(amount: number, from_currency: string, to_currency: string): Convert an amount between currencies using a free exchange rate API.
+- read_file(path: string): Read and return the contents of a file.
+- create_file(path: string, content: string): Create a new file with the given content. Fails if file already exists.
+- update_file(path: string, content: string): Overwrite a file with new content (creates it if it doesn't exist).
+- edit_file(path: string, old_text: string, new_text: string): Replace the first occurrence of old_text with new_text in a file.
+- list_dir(path: string): List the contents of a directory.
+- save_memory(key: string, value: string, category: string, tags: string, notes: string): Save or update a named fact in persistent long-term memory.
+
+key      : unique name (e.g. 'mom_birthday', 'user_city')
+value    : the data to store (any text)
+category : 'fact' | 'date' | 'preference' | 'reminder' | 'contact'
+tags     : comma-separated keywords for search (e.g. 'birthday,family')
+notes    : optional extra context
+
+- load_memory(key: string): Retrieve a named fact from persistent long-term memory by its key.
+- search_memories(query: string): Search persistent long-term memory by keyword. Returns matching entries.
+- list_memories(category: string): List all entries in persistent long-term memory. Optionally filter by category.
+- create_calendar_event(title: string, date: string, time: string, description: string, reminder_minutes: integer, duration_minutes: integer): Create a Google Calendar event or reminder.
+
+date     : ISO date string  e.g. '2026-05-01'
+time     : 24h time string  e.g. '09:00'  (default 09:00)
+reminder_minutes : popup reminder N minutes before (default 30)
+duration_minutes : event length in minutes (default 60)
+
+Requires Google OAuth setup (run setup_gcal.py once).
+Falls back to creating an .ics file in persistent_mem/events/ if not authenticated.
+
+
+RECENT HISTORY:
+[tool:save_memory] save_memory result (101 bytes) → art:00f09c7928dc858e
+  Content: Saved to persistent memory: key='wife_birthday' value='15 Sep 2026' category='date' (id=e7ce8e11fc2c)
+
+
+Now choose: answer in plain text OR call exactly one tool with JSON.

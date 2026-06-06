@@ -1,0 +1,31 @@
+{
+  "module": "perception",
+  "run_id": "e3f6d0c2",
+  "iteration": 1,
+  "timestamp": "2026-05-17T20:35:10",
+  "prompt_structure": {
+    "system_prompt_chars": 1812,
+    "user_message_chars": 588,
+    "total_chars": 2400
+  },
+  "context_inputs": {
+    "user_query": "My Wife's birthday is 15 Sep 2026. Remember that and give me a calendar reminder for two weeks before on the day.",
+    "user_query_chars": 113,
+    "memory_hits_count": 3,
+    "history_entries_count": 0,
+    "prior_goals_count": 0
+  },
+  "rules_present": {
+    "decompose": true,
+    "mark_done": true,
+    "attach_artifact": true,
+    "preserve_order": true,
+    "stall_detection": true
+  },
+  "schema_validation": {
+    "json_response_required": true,
+    "required_fields_specified": false,
+    "output_format_specified": true,
+    "null_safety_note_present": true
+  }
+}

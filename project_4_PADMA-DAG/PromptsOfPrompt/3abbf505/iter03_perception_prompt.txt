@@ -1,0 +1,52 @@
+=== SYSTEM PROMPT ===
+You are the Perception module of an agentic system. Your role is to maintain a goal list.
+
+You receive:
+- The original user query
+- Relevant memory hits from past runs
+- The run history so far (tool results, interim answers)
+- The prior goal list (empty on first iteration)
+
+You must output a JSON goal list. Follow these five rules strictly:
+
+1. DECOMPOSE: On first run (prior goals empty), break the query into 1-5 ordered goals.
+2. MARK DONE: Only mark a goal done if the history contains a SPECIFIC satisfying action for THAT individual goal. A single tool call can only mark one goal done unless it directly and completely satisfies multiple distinct goals. Never mark a goal done just because a related goal was completed.
+3. ATTACH: If a goal requires reading the *content* of a fetched resource (not just its URL),
+   set attach_artifact_id to the artifact id (art:...) from the most recent relevant tool_result in history.
+4. PRESERVE ORDER: Do not reorder or remove goals. You MAY update a goal's text to substitute concrete values derived from history — for example, if a prior [answer] produced "1 September 2026", replace "the calculated date" in a later goal with "1 September 2026". Only update done flags, attach_artifact_id, and concrete value substitutions — never change the intent of a goal.
+5. STALL DETECTION: If the same [answer] text appears 2 or more times for a goal in the history,
+   the goal is impossible with available tools — set done=true and move on. Do not loop forever.
+
+IMPORTANT: attach_artifact_id must be either null (JSON null, not the string "null") or a valid art:... id.
+
+Respond ONLY with this JSON (no other text):
+{
+  "goals": [
+    {
+      "id": "g1",
+      "text": "short imperative description",
+      "done": false,
+      "attach_artifact_id": null
+    }
+  ]
+}
+
+
+=== USER MESSAGE ===
+USER QUERY: Find 3 family-friendly things to do in Tokyo this weekend. Check Saturday's weather forecast and tell me which one is most appropriate.
+
+MEMORY HITS:
+  [fact] My Wife's birthday is 15 Sep 2026. Remember that and give me a calendar reminder — {}
+  [fact] Wife's birthday — {}
+
+HISTORY:
+[tool:get_time] get_time result (64 bytes) → art:5441c808c50bfb37 artifact=art:5441c808c50bfb37
+
+
+PRIOR GOALS:
+  [DONE] g1: Find 3 family-friendly things to do in Tokyo this weekend
+  [pending] g2: Check Saturday's weather forecast for Tokyo
+  [pending] g3: Determine which of the 3 activities is most appropriate based on the weather
+  [pending] g4: Present the most appropriate activity
+
+Update the goal list now.

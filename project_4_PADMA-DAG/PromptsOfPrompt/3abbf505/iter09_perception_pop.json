@@ -1,0 +1,31 @@
+{
+  "module": "perception",
+  "run_id": "3abbf505",
+  "iteration": 9,
+  "timestamp": "2026-05-17T20:38:04",
+  "prompt_structure": {
+    "system_prompt_chars": 1812,
+    "user_message_chars": 1478,
+    "total_chars": 3290
+  },
+  "context_inputs": {
+    "user_query": "Find 3 family-friendly things to do in Tokyo this weekend. Check Saturday's weather forecast and tell me which one is most appropriate.",
+    "user_query_chars": 135,
+    "memory_hits_count": 2,
+    "history_entries_count": 7,
+    "prior_goals_count": 4
+  },
+  "rules_present": {
+    "decompose": true,
+    "mark_done": true,
+    "attach_artifact": true,
+    "preserve_order": true,
+    "stall_detection": true
+  },
+  "schema_validation": {
+    "json_response_required": true,
+    "required_fields_specified": false,
+    "output_format_specified": true,
+    "null_safety_note_present": true
+  }
+}

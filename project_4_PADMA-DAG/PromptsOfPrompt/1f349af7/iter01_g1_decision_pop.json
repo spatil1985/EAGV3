@@ -1,0 +1,45 @@
+{
+  "module": "decision",
+  "run_id": "1f349af7",
+  "iteration": 1,
+  "goal_id": "g1",
+  "goal_text": "Remember the wife's birthday date",
+  "timestamp": "2026-05-17T19:58:21",
+  "prompt_structure": {
+    "system_prompt_chars": 845,
+    "user_message_chars": 2379,
+    "total_chars": 3224
+  },
+  "context_inputs": {
+    "tools_count": 14,
+    "tools_available": [
+      "web_search",
+      "fetch_url",
+      "get_time",
+      "currency_convert",
+      "read_file",
+      "create_file",
+      "update_file",
+      "edit_file",
+      "list_dir",
+      "save_memory",
+      "load_memory",
+      "search_memories",
+      "list_memories",
+      "create_calendar_event"
+    ],
+    "history_entries_count": 0,
+    "attached_artifacts_bytes": 0
+  },
+  "rules_present": {
+    "single_tool_per_response": true,
+    "no_narration": true,
+    "no_hallucinate_tools": true,
+    "no_artifact_handles_as_args": true
+  },
+  "output_format": {
+    "answer_option_defined": true,
+    "tool_call_json_format_defined": true,
+    "exclusive_choice_required": true
+  }
+}

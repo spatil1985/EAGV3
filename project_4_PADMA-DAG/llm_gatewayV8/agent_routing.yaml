@@ -1,0 +1,14 @@
+# Maps agent label -> provider name.
+# When a /v1/chat request carries an agent field listed here,
+# the request is dispatched directly without consulting the router pool.
+# This saves the router-classification latency (200-400ms per call).
+planner: gemini-2.5-flash
+researcher: gemini-2.5-flash
+distiller: gemini-2.5-flash
+summariser: gemini-2.5-flash
+critic: gemini-2.5-flash
+formatter: gemini-2.5-flash
+coder: gemini-2.5-flash
+retriever: gemini-2.5-flash
+translator: gemini-2.5-flash
+browser: gemini-2.5-flash

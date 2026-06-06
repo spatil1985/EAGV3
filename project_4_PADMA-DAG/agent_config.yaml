@@ -1,0 +1,68 @@
+skills:
+  planner:
+    prompt: prompts/planner.md
+    tools_allowed: []
+    temperature: 0.4
+    max_tokens: 1024
+
+  researcher:
+    prompt: prompts/researcher.md
+    tools_allowed: [web_search, fetch_url]
+    temperature: 0.7
+    max_tokens: 2048
+
+  retriever:
+    prompt: prompts/retriever.md
+    tools_allowed: [search_memories, load_memory]
+    temperature: 0.2
+    max_tokens: 1024
+
+  distiller:
+    prompt: prompts/distiller.md
+    tools_allowed: []
+    temperature: 0.1
+    max_tokens: 1024
+    critic: true
+
+  summariser:
+    prompt: prompts/summariser.md
+    tools_allowed: []
+    temperature: 0.3
+    max_tokens: 1024
+
+  critic:
+    prompt: prompts/critic.md
+    tools_allowed: []
+    temperature: 0.0
+    max_tokens: 512
+
+  formatter:
+    prompt: prompts/formatter.md
+    tools_allowed: []
+    temperature: 0.3
+    max_tokens: 1024
+
+  coder:
+    prompt: prompts/coder.md
+    tools_allowed: []
+    temperature: 0.2
+    max_tokens: 2048
+    internal_successors: [sandbox_executor]
+
+  sandbox_executor:
+    prompt: prompts/sandbox_executor.md
+    tools_allowed: []
+    temperature: 0.0
+    max_tokens: 256
+
+  browser:
+    prompt: prompts/browser.md
+    tools_allowed: [fetch_url]
+    temperature: 0.5
+    max_tokens: 2048
+
+  translator:
+    prompt: prompts/translator.md
+    tools_allowed: []
+    temperature: 0.3
+    max_tokens: 1024

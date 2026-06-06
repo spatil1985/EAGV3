@@ -1,0 +1,25 @@
+# Secrets & credentials
+.env
+persistent_mem/credentials.json
+persistent_mem/token.json
+persistent_mem/memories.json
+persistent_mem/events/
+
+# Runtime state
+state/
+logs/
+.pids
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Scratch dirs
+pdf_pages/
+gw_pages/
+
+# Claude Code local settings
+.claude/

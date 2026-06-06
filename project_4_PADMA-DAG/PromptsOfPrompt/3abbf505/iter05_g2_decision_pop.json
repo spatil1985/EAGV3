@@ -1,0 +1,45 @@
+{
+  "module": "decision",
+  "run_id": "3abbf505",
+  "iteration": 5,
+  "goal_id": "g2",
+  "goal_text": "Check Saturday's weather forecast for Tokyo",
+  "timestamp": "2026-05-17T20:37:15",
+  "prompt_structure": {
+    "system_prompt_chars": 1256,
+    "user_message_chars": 3749,
+    "total_chars": 5005
+  },
+  "context_inputs": {
+    "tools_count": 14,
+    "tools_available": [
+      "web_search",
+      "fetch_url",
+      "get_time",
+      "currency_convert",
+      "read_file",
+      "create_file",
+      "update_file",
+      "edit_file",
+      "list_dir",
+      "save_memory",
+      "load_memory",
+      "search_memories",
+      "list_memories",
+      "create_calendar_event"
+    ],
+    "history_entries_count": 3,
+    "attached_artifacts_bytes": 0
+  },
+  "rules_present": {
+    "single_tool_per_response": true,
+    "no_narration": true,
+    "no_hallucinate_tools": true,
+    "no_artifact_handles_as_args": true
+  },
+  "output_format": {
+    "answer_option_defined": true,
+    "tool_call_json_format_defined": true,
+    "exclusive_choice_required": true
+  }
+}

@@ -1,0 +1,49 @@
+=== SYSTEM PROMPT ===
+You are the Perception module of an agentic system. Your role is to maintain a goal list.
+
+You receive:
+- The original user query
+- Relevant memory hits from past runs
+- The run history so far (tool results, interim answers)
+- The prior goal list (empty on first iteration)
+
+You must output a JSON goal list. Follow these five rules strictly:
+
+1. DECOMPOSE: On first run (prior goals empty), break the query into 1-5 ordered goals.
+2. MARK DONE: If history already contains a satisfying action for a goal, set done=true.
+3. ATTACH: If a goal requires reading the *content* of a fetched resource (not just its URL),
+   set attach_artifact_id to the artifact id (art:...) from the most recent relevant tool_result in history.
+4. PRESERVE ORDER: Do not reorder or remove goals. Only update done flags and attach_artifact_id.
+5. STALL DETECTION: If the same [answer] text appears 2 or more times for a goal in the history,
+   the goal is impossible with available tools — set done=true and move on. Do not loop forever.
+
+IMPORTANT: attach_artifact_id must be either null (JSON null, not the string "null") or a valid art:... id.
+
+Respond ONLY with this JSON (no other text):
+{
+  "goals": [
+    {
+      "id": "g1",
+      "text": "short imperative description",
+      "done": false,
+      "attach_artifact_id": null
+    }
+  ]
+}
+
+
+=== USER MESSAGE ===
+USER QUERY: My Wife's birthday is 17 Sep 2026. Remember that and give me a calendar reminder for two weeks before on the day.
+
+MEMORY HITS:
+  [fact] My mom's birthday is 15 Sep 2026. Remember that and give me a calendar reminder  — {}
+  [fact] My mom's birthday is 15 Sep 2026. Remember that and give me a calendar reminder  — {}
+  [fact] My mom's birthday is 15 May 2026. Remember that and give me a calendar reminder  — {}
+  [fact] Mom's birthday — {}
+  [fact] Wife's birthday — {}
+
+HISTORY:
+(none yet)
+
+
+Update the goal list now.
